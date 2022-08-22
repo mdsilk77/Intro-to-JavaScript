@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>if tests</title>  
+    <script>
+        function displayAge() {
+            var age = document.getElementById("age").value;
+            var newWindow = window.open('Age Check','newWindow','width=200,height=100');
+            if (age >= 18) {
+                newWindow.document.write('You are an adult ' + age)
+                newWindow.focus();
+            }
+            else {
+                newWindow.document.write('You are a minor ' + age)
+                newWindow.focus();
+            }
+           
+        }
+    </script>
+</head>
+<body>
+    <label for='age'>Enter age:</label>
+    <input id="age" type="text">
+    <input type="button" value="Old Enough?" onclick="displayAge()"><br>
+    
+    <script>
+//        Create a Boolean variable and give it a value.
+   /*
+        var condition = false;
+        //Use the variable as a test condition.
+        if (condition) {
+            document.write("Condition is " + condition);              
+        } 
+        else {
+            alert('Condition is ' + condition);
+        }            
+    */
+    </script>
+</body>
+</html>

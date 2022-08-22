@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment 07</title>
+    <!-- This allows you to use FontAwesome for arrows. From fontawesome.com-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Each image is a background image for the div named picture */
+        #picture {
+            width: 800px;
+            height: 480px;
+            margin: 1em auto;
+            border: solid 1px silver;
+            /* Preload lots of images so slideshow runs smoothly */
+            background:
+                url(Assignment7/image01.jpg),
+                url(Assignment7/image02.jpg),
+                url(Assignment7/image03.jpg),
+                url(Assignment7/image04.jpg),
+                url(Assignment7/image05.jpg),
+                url(Assignment7/image06.jpg),
+                url(Assignment7/image07.jpg),
+                url(Assignment7/image08.jpg),
+                url(Assignment7/image09.jpg),
+                url(Assignment7/image10.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            /* Fade image slightly when transitioning from one to the other */
+            transition: 0.35s;
+            /* Pick one image to start with */
+            background-image: url(Assignment7/image01.jpg);
+        }
+
+        /* Color for FontAwesome icons */
+        .fa {
+            color: white;
+        }
+
+        #previous,
+        #next {
+            position: absolute;
+            bottom: 45%;
+            opacity: 0.7;
+
+        }
+
+        #previous {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+    </style>
+    <script>
+	//These are global variables.
+	var imgnumber = 1;
+	// This must indicate the number of images in slideshow
+	var imagecount = 10;
+	function slide(num) {
+	//Increment or decrement in range 1 to imagecount;
+	imgnumber = (imgnumber + num) % imagecount;
+	// If number reaches zero, go to imagecount
+	imgnumber = imgnumber < 1 ? imagecount : imgnumber;
+	// Add two-digit number to image file name and path.
+	var newimg = "../Assignment-07_Images/image" + ('0' + imgnumber).slice(-2) + ".jpg";
+	// Change background image to the one 
+	//with the two-digit number in its filename.
+	document.getElementById("picture").style.backgroundImage = "url(" + newimg + ")";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- The image holder and left/right arrows -->
+    <div id="picture" style="background-image: url(../Assignment-07_Images/image01.jpg);">
+        <span id="previous" class="fa fa-angle-left fa-5x" onclick="slide(-1)"></span>        
+        <span id="next" class="fa fa-angle-right fa-5x" onclick="slide(1)"></span>
+    </div>
+</body>
+
+</html>

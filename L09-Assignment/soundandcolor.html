@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound and Color</title>
+    <style>
+        #target {
+            text-align: center;
+            font-size: 40.0vh;
+            line-height: 50%;
+        }
+    </style>
+
+    <script>
+        //Global variables.
+        var counter = 0;
+        //Use for the timer later, just defining name here.
+        var clock;
+        //Color names.
+        var colors = ["red", "maroon", "purple", "fushsia", "green", "lime", "olive", "yellow", "navy", "blue", "teal",
+            "aqua"
+        ];
+        // Names of short sound effect files in sounds folder.
+        var sounds = ["chickens", "crow", "doop", "duck", "effect1", "effect2", "raygun", "sputnik", "tiger", "whoosh"]
+        // Create the in-memory audio player (not visible on the page)
+        if (window.HTMLAudioElement) {
+            var player = document.createElement('audio');
+        }
+        //Plays the next sound and shows sound name in random color.
+        function playsound() {
+            //Get path to sound file.
+            var soundfile = "sounds/" + sounds[counter] + ".mp3";
+            // Play the sound.
+            player.setAttribute('src', soundfile);
+            player.play();
+            // For color, get a random number in range.
+            var random = Math.floor(Math.random() * colors.length);
+            var colorname = colors[random]
+
+            //Identify the target paragraph.
+            var target = document.getElementById("target");
+            //Set the text color to random color.
+            target.style.color = colorname;
+            //Set target text to sound file name.
+            target.innerHTML = sounds[counter];
+            //Increment the sounds array index counter.
+            counter = (counter + 1) % (sounds.length);
+        }
+
+        function playall() {
+            //Play first sound with no delay.
+            playsound();
+            //Then play every 3 seconds.
+
+        };
+
+        function shutup() {
+            //Change the text to the word DONE.
+            document.getElementById("target").innerHTML = "DONE"
+            //Stop the timer
+
+        };
+    </script>
+</head>
+
+<body>
+    <button onclick="playall()">Play Sounds</button>&nbsp;&nbsp;
+    <button onclick="shutup()">Stop Sound</button>
+    <p id="target"></p>
+</body>
+
+</html>

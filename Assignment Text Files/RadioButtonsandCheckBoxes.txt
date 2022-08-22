@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Radio Buttons and Checkboxes</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td rowspan="4" style="vertical-align: top;">Age Group:</td>
+            <td>
+
+                <form id="frmAge">
+                    <!-- Radio buttons -->
+                    <!-- To make them a group, give them the same name with name= -->
+                    <input type="radio" name="rbAge" value="0" id="age0">
+                    <label for="age0">Under 12 years&nbsp;&nbsp;</label>
+                    <input type="radio" name="rbAge" value="10.00" id="age1">
+                    <label for="age1">Adult&nbsp;&nbsp;</label>
+                    <input type="radio" name="rbAge" value="5.00" id="age2">
+                    <label for="age2">65 or older</label>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!-- Checkbox and its label -->
+                <input type="checkbox" id="cbResident">
+                <label for="cbResident">I am a local resident</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button>Calculate</button>
+            </td>
+        <tr>
+            <td id="result"></td>
+        </tr>
+        </tr>
+    </table>
+</body>
+
+</html>

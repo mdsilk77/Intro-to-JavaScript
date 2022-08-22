@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basic Math</title>
+    <style>
+        /* All tables */
+        table {
+            border-collapse: collapse;
+        }
+
+        /* All table cells */
+        td {
+            border: solid 1px silver;
+            text-align: right;
+        }
+
+        /* All textboxes with type=number */
+        input[type=number] {
+            width: 80px;
+            text-align: right;
+        }
+
+        /* Results table only */
+        #results {
+            margin-top: 2em;
+            /* Invisible when page first opens */
+            display: none;
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <table style="text-align:right;">
+        <tr>
+            <td>Enter a quantity:</td>
+            <td><input type="number" id="tbQuantity"></td>
+        </tr>
+        <tr>
+            <td>Enter a unit price:</td>
+            <td><input type="number" id="tbUnitPrice"></td>
+        </tr>
+        <tr>
+            <td>Enter a sales tax rate (%):</td>
+            <td><input type="number" id="tbSalesTaxPercent" value="5.75"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center;">
+                <button>Calculate</button>
+            </td>
+        </tr>
+    </table>
+    <!-- The results table should show the results when user clicks Calculate -->
+    <table id="results">
+
+        <tr>
+            <td>Total Sale:</td>
+            <td id="tdTotalSale"></td>
+        </tr>
+        <tr>
+            <td>Sales Tax:</td>
+            <td id="tdSalesTax"></td>
+        </tr>
+        <tr>
+            <td>Grand Total:</td>
+            <td id="tdGrandTotal" style="border-top:solid 2px black;"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

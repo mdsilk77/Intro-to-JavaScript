@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SoundFX</title>
+        <script>            
+            // This code runs when page first opens
+            // If the browser supports HTML5 audio, it creates a player
+            if (window.HTMLAudioElement) {
+                var player = document.createElement('audio');
+
+                if (player.canPlayType('audio/mpeg').length > 0) {
+                    // Code for mp3 sound file goes here
+                    player.setAttribute('src', 'sounds/whoosh.mp3');
+
+                } else if (player.canPlayType('audio/ogg; codecs="vorbis"').length > 0) {
+                    // Code for ogg sound file goes here
+                    player.setAttribute('src', 'sounds/whoosh.ogg');
+
+                }
+            }
+            
+            function playsound() {
+                if (window.player) {
+                    player.play();
+                }
+            }            
+        </script>
+    </head>
+    <body>
+        <button onclick="playsound()">Woosh</button>
+
+
+    </body>
+</html>

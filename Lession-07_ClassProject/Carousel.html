@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carousel</title>
+    <style>
+    /* CSS code to style the pictures */
+    .carousel {
+    text-align: center;
+    }
+    #bigpic {
+    height: 400px;
+    }
+    .thumbs img {
+    height: 75px;
+    }
+    </style>
+    <script>
+        //The maximages global variable must equal the number of thumbnails in the gallery
+        var maximages = 11;
+        //Folder name and start of file name of each image file
+        var startPath = "birds/birds";
+        var extension = ".png";
+        function calcSlide(direction) {
+            var startPos = document.getElementById("bigpic").src.indexOf(startPath);
+            var fileNum = document.getElementById("bigpic").src.substr(startPos + 11,2);
+            var nextNum = parseInt(fileNum) + direction;
+
+            if (nextNum < 1) {
+                nextNum = maximages;
+            }
+            if (nextNum > maximages) {
+                nextNum = 1;
+            }
+
+            var twoDigitNextNum = ("0" + nextNum).slice(-2);
+            var showImg = startPath + twoDigitNextNum + extension;
+            showbig(showImg);
+        }
+
+        function showbig(image) {
+            document.getElementById("bigpic").src = image;
+        }
+    </script>
+</head>
+<body>
+ <!-- HTML to display the pictures -->
+ <div class="carousel">
+  <img src=" birds/birds01.png" alt="" id="bigpic">      
+  <div class="thumbs">
+    <img src="Icons/LeftArrow.png" alt="Previous" onclick="calcSlide(-1)">
+    <img src="birds/birds01.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds02.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds03.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds04.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds05.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds06.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds07.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds08.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds09.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds10.png" alt="" onclick="showbig(this.src)">
+    <img src="birds/birds11.png" alt="" onclick="showbig(this.src)">
+    <img src="Icons/RightArrow.png" alt="Next" onclick="calcSlide(1)">
+  </div><!-- End thumbs -->
+ </div><!-- End carousel -->
+</body>
+</html>

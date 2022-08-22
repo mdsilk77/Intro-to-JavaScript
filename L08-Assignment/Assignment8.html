@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Array Slideshow</title>
+    <!-- This allows you to use FontAwesome for arrows. From fontawesome.com-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Picture is a div that contains the img tag for the changing image */
+        #picture {
+            width: 500px;
+            margin: 1em auto;
+            border: solid 1px silver;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Size the image to the width of the picture div. */
+        #target {
+            width: 100%;
+        }
+
+        /* Color for FontAwesome icons */
+        .fa {
+            color: white;
+        }
+
+        #previous,
+        #next {
+            position: absolute;
+            bottom: 45%;
+            opacity: 0.7;
+            z-index: 1000;
+        }
+
+        #previous {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+    </style>
+    <script>
+        var imgNumber = 0;
+        var picFolder = "Slideshow";
+        var picFiles = ["candle.jpg","chip.jpg","fire.png","paint.png","water.png"];
+        var images = [];
+
+        //Populate each image object with a picture from a file
+        for (var i = 0; i < picFiles.length; i++) {
+            images[i] = new Image();
+            images[i].src = picFolder + "/" + picFiles[i];
+        }
+
+        //Number of images in array is length minus one (because first is always zero)
+        var imgCount = images.length;
+
+        function slide(num) {
+            imgNumber = (imgNumber + num) % imgCount;
+            
+            //If imagNumber reaches zero, loop around to imgCount
+            imgNumber = imgNumber < 0 ? imgCount -1 : imgNumber;
+
+            //Set the image source to the source of the array image
+            document.getElementById("target").src = images[imgNumber].src;
+        }
+
+        //Wait until the page is fully loaded before setting source of the image
+        window.addEventListener('load', (event) => {
+        //Start by showing the first image in the array
+        document.getElementById("target").src = images[0].src;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- The image holder and left/right arrows -->
+    <div id="picture">
+        <img id="target" alt="">
+        <span id="previous" class="fa fa-angle-left fa-5x" onclick="slide(-1)"></span>
+        <span id="next" class="fa fa-angle-right fa-5x" onclick="slide(1)"></span>
+    </div>
+</body>
+</html>

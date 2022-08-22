@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Switch Demo</title>
+  <script>
+    function switchdemo() {
+      //Get the value from the textbox.
+      var num = parseInt(document.getElementById("txtEntry").value)
+      //Declare msg variable as string.
+      var msg = ""
+      switch (num) {
+        case 1:
+          msg = "one";
+          break;
+        case 2:
+          msg = "two"
+          break;
+        case 3:
+          msg = "three"
+          break;
+        case 4:
+          msg = "four"
+          break;
+        default:
+          msg = "I asked for a number between 1 and 4.";
+      }
+      //Find and populate result paragraph.
+      document.getElementById("result").innerHTML = msg;
+    }
+  </script>
+</head>
+<body>
+  <p>Type a number from 1 to 4 then click Go:
+    <input type="number" id="txtEntry" style="width: 60px;" />
+    <button onclick="switchdemo()">Go</button>
+  </p>
+  <p id="result" style="color:rgb(255, 0, 0);"></p>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Responsive Auto Photo Slider</title>
+    <!-- Common tag for helping page fit phone screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Window through which the photos slide */
+        #window {
+            width: 60vw;
+            /* 56.25% is for 16:9 ratio. */
+            padding-top: calc(.5625 * 60vw);
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 3px;
+            box-shadow: 2px 2px 2px silver;
+        }
+
+        /* Each image in the show */
+        #window img {
+            z-index: 10;
+            position: absolute;
+            top: 0;
+            left: 60vw;
+            width: 60vw;
+            animation-iteration-count: 1;
+        }
+
+        /* Slide current image off to the left out of view */
+        #window img.slideout {
+            left: -60vw;
+            transition-duration: 1s;
+            animation-iteration-count: 1;
+        }
+
+        /* Slide next image into view */
+        #window img.slidein {
+            left: 0;
+            transition-duration: 1s;
+            animation-iteration-count: 1;
+        }
+    </style>
+    <script>
+        var counter = 0;
+        //Name of the folder containing images
+        var picfolder = "people";
+        //Image filenames in the array
+        var picfiles = ["image01.jpg","image02.jpg","image03.jpg","image04.jpg","image05.jpg","image06.jpg","image07.jpg","image08.jpg","image09.jpg","image10.jpg",];
+        //Placeholder for any image's path (folder/fiename) populated later
+        var imgsource = "";
+        //Number of images in array is length minus one
+        var imgcount = picfiles.length - 1;
+
+        //Figures out which image to show next, restarts at 1 imgcount reached.
+        function next() {
+            //Increment the counter (or restart at 1)
+            counter += 1;
+            //current image id number is equal to counter.
+            var currentimage = counter % imgcount;
+            //the next image is counter + 1
+            nextimage = (currentimage + 1) % imgcount;
+            //generate the id name, needs leading zero if < 10.
+            thisimgid = "img" + ('0' + currentimage.toString()).slice(-2);
+            nextimageid = "img" + ('0' + nextimage.toString()).slice(-2);
+            //Pass the ids of the images to te slide function
+            slide(thisimgid, nextimageid);
+        }
+
+        //i1 is the image showing, i2 is the next image to show.
+        function slide(i1, i2) {
+            //Slide out the current image
+            document.getElementById(i1).className = "slideout";  // Are the slideout and slidein class names reserved words of some type?
+            //Slide in the next image
+            document.getElementById(i2).className = "slidein";
+            //Wait, then recycle the last slide-out image over to the pile to the left of window
+            setTimeout(function()  {
+                hideit(i1)
+            }, 1100);
+        }
+
+        //Removing the class name moves it back to the left of the show where it's hidden.
+        function hideit(nm) {
+            document.getElementById(nm).className = "";
+        }
+
+        //Wait until the page is fully loaded before setting source of the image.
+        window.addEventListener('load', (event) => {
+            for (var i = 0; i < picfiles.length; i++) {
+                //Create image path (folder/filename)
+                imgsource = picfolder + '/' + picfiles[i];
+                //Create an image element
+                var img = document.createElement("img");
+                //Make the source of the image the next path in the loop
+                img.src = imgsource;
+                //Need to give that image an id
+                img.id = "img" + ('0' + i.toString()).slice(-2);
+                //Append the image to the window element
+                document.getElementById("window").appendChild(img);
+                //Need to start first image as slidein class or it looks wonky on first image
+                if (i == 1) {
+                    document.getElementById(img.id).classList.add('slidein');
+                }
+            }
+            //All the setup is done, so call next() function every 3 seconds
+            var timer = setInterval(function() {
+                next()
+            }, 3000);
+        })
+    </script>
+</head>
+
+<body>
+    <div id="window">
+        <!-- Start wtith the first image already in here set to class='slidein' -->
+        <img src="people/image01.jpg" class="slidein">
+    </div>
+</body>
+
+</html>

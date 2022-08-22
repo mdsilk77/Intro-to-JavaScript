@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+      <title>jQueryDemo1</title>
+
+      <style>
+        /* Applies to all divs on this page */
+        div {
+        width: 100px;
+        height: 100px;
+        border: solid 1px black;
+        margin: 10px;
+        float: left;
+        }
+      </style>
+      <!-- jQuery CDN from code.jquery.com -->
+      <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+          integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
+      </script>
+      <script>
+        $(document).ready(function () {
+        // jQuery code to execute on any button click
+          $("#button2").click(function () {
+            // $("div").fadeToggle();           
+            if($("div").is(":visible")) {
+              $("div").slideUp(2000);            
+            } else {
+              $("div").slideDown(2000);
+            }
+          });
+
+          $("button").click(function () {
+            $("div").slideToggle(2000);
+          });
+        });
+      </script>
+  </head>
+<body>
+ <button>Click Me</button>
+ <button id="button2">No, Click Me</button> <br>
+ <div style="background-color: red">
+ </div>
+ <div style="background-color: blue">
+ </div>
+ <div style="background-color: green">
+ </div>
+ <div style="background-color: yellow">
+ </div>
+</body>
+</html>

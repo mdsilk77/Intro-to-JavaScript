@@ -1,0 +1,9 @@
+h1 {
+    border:dashed 1px blue;
+}
+
+button {
+    font-size: 100%;
+    overflow: visible;
+    color:darkgreen;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Array Slideshow</title>
+    <!-- This allows you to use FontAwesome for arrows. From fontawesome.com-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Picture is a div that contains the img tag for the changing image */
+        #picture {
+            width: 500px;
+            margin: 1em auto;
+            border: solid 1px silver;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Size the image to the width of the picture div. */
+        #target {
+            width: 100%;
+        }
+
+        /* Color for FontAwesome icons */
+        .fa {
+            color: white;
+        }
+
+        #previous,
+        #next {
+            position: absolute;
+            bottom: 45%;
+            opacity: 0.7;
+            z-index: 1000;
+        }
+
+        #previous {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+    </style>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- The image holder and left/right arrows -->
+    <div id="picture">
+        <img id="target" alt="">
+        <span id="previous" class="fa fa-angle-left fa-5x" onclick="slide(-1)"></span>
+        <span id="next" class="fa fa-angle-right fa-5x" onclick="slide(1)"></span>
+    </div>
+</body>
+</html>

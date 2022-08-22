@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search My Site</title>
+    <script>
+        //Search a specific site rather than the entire Web
+        function search() {
+            var site = 'wikipedia.org';
+            var text = document.getElementById("txtlookfor").value;
+            var engine = document.getElementById("dropdown").value;
+            
+            if (engine == "1") {
+                var engineUrl = "https://www.google.com/search?q=";
+            } 
+            else if (engine == "2") {
+                var engineUrl = "https://www.bing.com/search?q=";
+            } else {
+                alert("Please choose a valid search engine!");
+                return;
+            }
+            
+            if (text.length > 0) {
+                var urlQuery = engineUrl + encodeURIComponent(text) + " site:" + site;
+                                
+                var screenW = screen.width;                             
+                var winLeft = screenW - 900;
+                
+                var newWindow = window.open(urlQuery,'My Site Search','left=' + winLeft + ', top=15, width=900,height=550');
+                
+//                newWindow.location.href=urlQuery;                    
+//                location.href=urlQuery;
+                document.getElementById("queryResult").innerHTML = urlQuery;
+            } 
+            else {
+                alert("Please enter search text and press 'Go' button");
+            }
+            
+        }
+    </script>
+ </head>
+<body>
+    <p>Search this site:        
+        <input type="text" id="txtlookfor" autofocus>
+        &nbsp;Choose engine:
+        <select id="dropdown">
+            <option value="2">Bing</option>
+            <option value="1" selected>Google</option>
+            <option value="3">Yahoo</option>
+        </select>        
+        <input type="button" onclick="search()" value="Go">
+    </p>
+    <p id="queryResult">
+    </p>
+</body>
+</html>

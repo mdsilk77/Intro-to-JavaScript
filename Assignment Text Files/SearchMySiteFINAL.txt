@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search My Site</title>
+	<script>
+	//Search a specific site rather than the entire Web.
+	function search(){
+	//Replace sample domain name below with your own domain name. 
+	var site = "wikipedia.org";	
+	//Get the text that the user typed into the textbox.
+	var lookfor = document.getElementById("txtlookfor").value; 
+	//If the box wasn't empty do the search. Then press ENTER. 
+	if(lookfor.length>0) {
+	//Look at the drop-down value and make search URL accordingly. 
+	var ddchoice = document.getElementById("dropdown").value
+	
+	
+	//Build URL for the search. 
+	if (ddchoice == 2) {
+	var query="http://www.google.com/search?q=" + encodeURIComponent(lookfor) + " site:" + site;
+	} else {
+  	var query = "http://www.bing.com/search?q=" + encodeURIComponent(lookfor) + " site:" + site;
+	}
+
+	//Set Address bar equal to query.
+	location.href=query;  
+	} 
+	else {
+	//If textbox was empty, show an alert.
+	alert("Please type the word or phrase that you would like to search for.");
+	}
+
+	} 
+	</script>
+ </head>
+<body>
+    <p>Search this site:
+        <input type="text" id="txtlookfor" autofocus>
+		<!-- Show drop-down list -->
+		&nbsp;Choose engine: 
+		<select id="dropdown">
+		<option value="1">Bing</option> 
+		<option value="2" selected>Google</option>
+		
+		</select>          
+        <input type="button" onclick="search()" value="Go">
+    </p>
+</body>
+</html>

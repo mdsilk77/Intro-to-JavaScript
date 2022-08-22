@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQueryButtons</title>
+    <!-- jQuery CDN from code.jquery.com -->
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
+        </script>
+    <script>
+        $(document).ready(function () {
+            // jQuery code to execute after page load
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#button2").click(function () {
+                alert("You clicked a button");
+            });
+            $("#button1").click(function () {
+                $("#input2").slideDown();
+            });
+            $("#button3").click(function () {
+                var txtWidth = $("#input1").width();
+                alert("input1 is " + txtWidth + " characters wide");
+            });
+            $("button").on("contextmenu", function(e) {
+                e.preventDefault();
+                alert("Copyright 2022, Micah Silkwood, All Rights Reserved");
+            });
+            $("#input1").keydown(function () {
+                alert("Don't release that button or the following input box will be removed!");
+                $("#input2").hide();
+                alert("I told you not to release the button!");
+            });
+        }); 
+    </script>
+</head>
+<body>
+    <button id="button1">Button 1</button><br />
+    <button id="button2">Button 2</button><br />
+    <button id="button3">Button 3</button><br />
+    <input id="input1"><br/>
+    <input id="input2">
+</body>
+</html>
